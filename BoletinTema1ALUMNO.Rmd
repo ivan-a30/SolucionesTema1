@@ -92,22 +92,36 @@ b.  Usa las funciones **dim, head, tail, str** para una primera visión de los c
 c.  Muestra los nombres de las filas y las columnas (**rownames**, **colnames**)
 
 ```{r}
+#a)
+help(package = MASS,topic = mammals) #Para ver las características del conjunto de datos mammals del paquete    MASS
+
+help(package = robustbase,topic = Animals2) #Para ver las características del conjunto de datos Animals2 del paquete robustbase
 
 
+#b)
+library(robustbase)
+library(MASS)
+df_m <- mammals
+df_a <- Animals2
 
+dim(df_a)
+dim(df_m)
 
+head(df_a)
+head(df_m)
 
+tail(df_a)
+tail(df_m)
 
+str(df_a)
+str(df_m)
 
+#c)
+rownames(df_a)
+colnames(df_a)
 
-
-
-
-
-
-
-
-
+rownames(df_m)
+colnames(df_m)
 
 ```
 
@@ -116,6 +130,8 @@ d.  Usa la función **intersect** y almacena en la variable *commonAnimals* los 
 ```{r}
 
 
+commonAnimals <- intersect(df_a, df_m)
+rownames(commonAnimals)
 
 
 
@@ -127,28 +143,19 @@ e.  Usa **setdiff** para averiguar qué animales no están en ambos conjuntos. �
 ```{r}
 
 
+diferentes_m <- setdiff(rownames(df_m), rownames(df_a))
+diferentes_m
 
-
+diferentes_a <- setdiff(rownames(df_a), rownames(df_m))
+diferentes_a
 
 
 ```
 
 e.  Determina las diferencia entre los animales que no aparecen en ambos conjuntos.
 
-```{r}
 
-
-
-
-
-
-
-
-
-
-
-
-```
+  Respuesta: No aparecen debido a que no estan bien escritos. Ejemplo, Arctic fox y artic fox.
 
 2.  La funcion **qqPlot** del paquete **car** puede ser utilizada para determinar gráficamente si una serie de puntos siguen una distribución de datos Gaussiana. Si las muestras están dentro de las líneas discontinuas podemos indicar que siguen una distribución Gaussiana con un 95 % de confianza. Utilizando esta función representa el logaritmo neperiano (**log**) del peso del cerebro (**brain weigths**) del registro de datos **mammals** del paquete **MASS** y conjunto de datos **Animals2** de la librería **robustbase**. ¿Presentan el mismo comportamiento ?.¿Podríamos decir que siguen una distribución Gaussiana ?
 
