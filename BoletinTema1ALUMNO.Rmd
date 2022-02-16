@@ -193,31 +193,33 @@ head(libReturn$results, n=5)
 
 ```{r}
 
+library(car)
+library(dplyr)
 
+#a)
+head(cabbages)
+dim(cabbages)
+tail(cabbages)
+glimpse(cabbages)
+str(cabbages)
 
+#b)
+any(is.na(cabbages))
+colSums(sapply(cabbages, is.na))
+# Hay 0 valores perdidos
 
+#c)
+head(Chile)
+dim(Chile)
+tail(Chile)
+glimpse(Chile)
+str(Chile)
+any(is.na(Chile)) #Hay valores perdidos
+colSums(sapply(Chile, is.na)) #1 en age, 11 en education, 98 en income, 17 en statusquo, 168 en vote
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#d)
+summary(cabbages)
+summary(Chile)
 
 ```
 
