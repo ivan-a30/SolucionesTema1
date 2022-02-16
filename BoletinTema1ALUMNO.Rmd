@@ -1,25 +1,25 @@
 ---
-title: "Boletín Tema 1."
+title: "Boletín Tema 1"
 subtitle: Tratamiento de Datos. Grado en Ciencia de Datos- UV
-author: "Ivan Alexandrov"
+author: "Marcelino Martínez"
 date:  "`r Sys.Date()`"  #Pondría la fecha del día actual
 params:
   lang: ES
 lang: "`r switch(params$lang, ES = 'es-ES', EN = 'en-US')`"
 output:
+  pdf_document:
+    toc: no
+    toc_depth: 3
+    number_sections: yes
+  html_notebook:
+    echo: yes
+    number_sections: yes
+    toc: yes
   html_document:
     echo: yes
     number_sections: yes
     theme: lumen
     toc: yes
-  html_notebook:
-    echo: yes
-    number_sections: yes
-    toc: yes
-  pdf_document:
-    toc: no
-    toc_depth: 3
-    number_sections: yes
 language:
   label:
     fig: 'Figura '
@@ -92,36 +92,22 @@ b.  Usa las funciones **dim, head, tail, str** para una primera visión de los c
 c.  Muestra los nombres de las filas y las columnas (**rownames**, **colnames**)
 
 ```{r}
-#a)
-help(package = MASS,topic = mammals) #Para ver las características del conjunto de datos mammals del paquete    MASS
-
-help(package = robustbase,topic = Animals2) #Para ver las características del conjunto de datos Animals2 del paquete robustbase
 
 
-#b)
-library(robustbase)
-library(MASS)
-df_m <- mammals
-df_a <- Animals2
 
-dim(df_a)
-dim(df_m)
 
-head(df_a)
-head(df_m)
 
-tail(df_a)
-tail(df_m)
 
-str(df_a)
-str(df_m)
 
-#c)
-rownames(df_a)
-colnames(df_a)
 
-rownames(df_m)
-colnames(df_m)
+
+
+
+
+
+
+
+
 
 ```
 
@@ -129,8 +115,10 @@ d.  Usa la función **intersect** y almacena en la variable *commonAnimals* los 
 
 ```{r}
 
-commonAnimals <- intersect(df_a, df_m)
-rownames(commonAnimals)
+
+
+
+
 
 ```
 
@@ -138,27 +126,34 @@ e.  Usa **setdiff** para averiguar qué animales no están en ambos conjuntos. �
 
 ```{r}
 
-diferentes_m <- setdiff(rownames(df_m), rownames(df_a))
-diferentes_m
 
-diferentes_a <- setdiff(rownames(df_a), rownames(df_m))
-diferentes_a
+
+
+
 
 ```
 
 e.  Determina las diferencia entre los animales que no aparecen en ambos conjuntos.
 
-Respuesta: No aparecen debido a que no estan bien escritos. Ejemplo, Arctic fox y artic fox.
+```{r}
 
 
+
+
+
+
+
+
+
+
+
+
+```
 
 2.  La funcion **qqPlot** del paquete **car** puede ser utilizada para determinar gráficamente si una serie de puntos siguen una distribución de datos Gaussiana. Si las muestras están dentro de las líneas discontinuas podemos indicar que siguen una distribución Gaussiana con un 95 % de confianza. Utilizando esta función representa el logaritmo neperiano (**log**) del peso del cerebro (**brain weigths**) del registro de datos **mammals** del paquete **MASS** y conjunto de datos **Animals2** de la librería **robustbase**. ¿Presentan el mismo comportamiento ?.¿Podríamos decir que siguen una distribución Gaussiana ?
 
 ```{r}
 
-qqPlot(log(mammals$brain))
-
-qqPlot(log(Animals2$brain))
 
 ```
 
@@ -169,12 +164,15 @@ qqPlot(log(Animals2$brain))
     c.  Determina el número de librerías que tienes instaladas.
 
     ```{r}
-libReturn <- library()
-libReturn
-#length(libReturn)
-libReturn[[2]] [1:5]
 
-head(libReturn$results, n=5)
+
+
+
+
+
+
+
+
 
     ```
 
@@ -186,33 +184,31 @@ head(libReturn$results, n=5)
     d.  Utiliza la función **summary**, sobre **cabbages** y **Chile** y observa como, además de otros estadísticos, también devuelve el número de valores perdidos de cada variable.
 
 ```{r}
-library(car)
-library(dplyr)
 
 
 
-head(cabbages)
-dim(cabbages)
-tail(cabbages)
-glimpse(cabbages)
-str(cabbages)
 
-#b)
-any(is.na(cabbages))
-colSums(sapply(cabbages, is.na))
 
-#c)
-head(Chile)
-dim(Chile)
-tail(Chile)
-glimpse(Chile)
-str(Chile)
-any(is.na(Chile))
-colSums(sapply(Chile, is.na))
 
-#d)
-summary(cabbages)
-summary(Chile)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ```
@@ -221,12 +217,8 @@ summary(Chile)
 
 ```{r}
 
-"install.packages(qqplotr)
-library(qqplotr)
-"
-qqPlot(cabbages$HeadWt)
 
-qqPlot(cabbages$VitC)
+
 
 
 ```
@@ -234,9 +226,8 @@ qqPlot(cabbages$VitC)
 6.  Una representación habitual, para determinar la distribución de los datos de una variable cuantitativa es el histograma (**hist**). Determina, de forma aproximada, utilizando el histograma, si hay diferencias entre los contenidos de vitamina C (**VitC**), para las diferentes variedades de calabaza (variable **Cult**), en el conjunto de datos **cabbages**.
 
 ```{r}
-library(ggplot2)
-library(tidyverse)
-ggplot(cabbages, aes(VitC,fill = Cult)) + geom_histogram(alpha=0.5)
+
+
 
 ```
 
@@ -246,7 +237,7 @@ ggplot(cabbages, aes(VitC,fill = Cult)) + geom_histogram(alpha=0.5)
 #Diagrama de dispersión global.
 plot(whiteside$Temp, whiteside$Gas)
 #Diagrama de dispersión etiquetando según un factor.
-plot(whiteside$Temp, whiteside$Gas, pch=c(6,16)[whiteside$Insul])
+plot(whiteside$Temp, whiteside$Gas, pch=c(6,16)[whiteside\$Insul])
 legend(x="topright",legend=c("Insul = Before","Insul = After"), pch=c(6,16))
 # Planteamos 2 modelos lineales, uno para los datos de cada factor
 Model1 <- lm(Gas ~ Temp, data = whiteside, subset = which(Insul == "Before"))
@@ -258,37 +249,44 @@ abline(Model2)
 
 ```{r,echo=T,include=T,eval=F}
 
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 a.  Utiliza un procedimiento análogo para determinar si se aprecia una relación lineal entre los niveles de vitamina C, **VitC** en función del peso de la calabaza, **HeadWt**, en el conjunto de datos **cabbages**.
 b.  Repite el apartado anterior, pero obteniendo un modelo para cada una de las dos variedades de calabaza, **Cult**. Ver[Parámetros básicos plot](https://www.statmethods.net/advgraphs/parameters.html).
 
 ```{r}
-#a)
-plot(cabbages$VitC ~ cabbages$HeadWt) #comparacion **VitC** en función del peso de la calabaza **HeadWt**
-
-#No existe relacion lineal
-#b)
-plot(cabbages$VitC ~ cabbages$HeadWt, pch=c(1,18)[cabbages$Cult])#comparacion **VitC** en función del peso de la calabaza **HeadWt** por  variedad de calabaza
 
 
-Modeloc39<-lm(cabbages$VitC ~ cabbages$HeadWt, data=cabbages, subset=which(Cult=="c39"))#obtenemos el modelo c39
-Modeloc52<-lm(cabbages$VitC ~ cabbages$HeadWt, data=cabbages, subset=which(Cult=="c52"))#obtenemos el modelo c52
 
-abline(Modeloc39, lty=3)
-abline(Modeloc52)
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
 
 c.  Usa **summary** con cada uno de los modelos obtenidos y observa **Coefficients**. Dado que hemos planteado un modelo $y=mx+n$, donde $y=VitC$ y $x=HeadWt$. La función **lm** nos permite obtener **(Intercept)**; **n** y la pendiente **HeadWt**; **m** (además de otros parámetros adicionales que evalúan la caracterísiticas del modelo). Observa que en todos los casos, la pendiene es negativa indicando que las calabazas de más peso contienen menos vitamina C. No te preocupes por el resto de parámetros del modelo, por el momento.
 
 ```{r}
-#c)
-summary(Modeloc39)
-summary(Modeloc52)
-lm(Modeloc39)
-lm(Modeloc52)
-
-
 
 
 
