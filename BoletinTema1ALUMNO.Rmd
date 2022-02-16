@@ -1,5 +1,5 @@
 ---
-title: "Boletín Tema 1"
+title: "Boletín Tema 1."
 subtitle: Tratamiento de Datos. Grado en Ciencia de Datos- UV
 author: "Ivan Alexandrov"
 date:  "`r Sys.Date()`"  #Pondría la fecha del día actual
